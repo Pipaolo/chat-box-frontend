@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-rows-2 grid-cols-2 md:grid-rows-none md:grid-cols-3 gap-4 max-w-3xl w-full place-content-center"
+    class="grid sm:grid-cols-3 grid-rows-2 grid-cols-2 sm:grid-rows-none gap-4 max-w-3xl w-full place-content-center"
   >
     <input
       v-model="roomID"
@@ -8,7 +8,7 @@
       class="col-span-2 rounded-lg outline-none p-4"
       placeholder="Room ID"
     />
-    <div class="col-span-2 grid grid-cols-2 md:grid-cols-2 gap-4">
+    <div class="sm:col-span-1 col-span-2 grid grid-cols-2 gap-4">
       <button
         @click="onJoinButtonClicked"
         type="submit"
