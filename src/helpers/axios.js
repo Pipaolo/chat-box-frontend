@@ -2,7 +2,7 @@ import Axios from "axios";
 
 const axios = Axios.create({
   baseURL:
-    import.meta.env.mode === "production"
+    import.meta.env.MODE === "production"
       ? `https://${import.meta.env.VITE_SERVER_URL}:${
           import.meta.env.VITE_SERVER_PORT
         }`
