@@ -3,9 +3,7 @@ import Axios from "axios";
 const axios = Axios.create({
   baseURL:
     import.meta.env.MODE === "production"
-      ? `https://${import.meta.env.VITE_SERVER_URL}:${
-          import.meta.env.VITE_SERVER_PORT
-        }`
+      ? `https://${import.meta.env.VITE_SERVER_URL}`
       : `http://${import.meta.env.VITE_SERVER_URL}:${
           import.meta.env.VITE_SERVER_PORT
         }`,

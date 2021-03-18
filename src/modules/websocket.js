@@ -29,9 +29,7 @@ export const joinRoom = (roomID) => {
 export const connect = async () => {
   const socket = IO(
     import.meta.env.MODE === "production"
-      ? `https://${import.meta.env.VITE_SERVER_URL}:${
-          import.meta.env.VITE_SERVER_PORT
-        }`
+      ? `https://${import.meta.env.VITE_SERVER_URL}`
       : `http://${import.meta.env.VITE_SERVER_URL}:${
           import.meta.env.VITE_SERVER_PORT
         }`,
