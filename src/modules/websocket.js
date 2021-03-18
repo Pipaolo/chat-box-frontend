@@ -28,9 +28,13 @@ export const joinRoom = (roomID) => {
 
 export const connect = async () => {
   const socket = IO(
-    `http://${import.meta.env.VITE_SERVER_URL}:${
-      import.meta.env.VITE_SERVER_PORT
-    }`,
+    import.meta.env.MODE === "production"
+      ? `https://${import.meta.env.VITE_SERVER_URL}:${
+          import.meta.env.VITE_SERVER_PORT
+        }`
+      : `http://${import.meta.env.VITE_SERVER_URL}:${
+          import.meta.env.VITE_SERVER_PORT
+        }`,
     {
       path: "/chat-box/rooms/",
       transports: ["websocket"],
