@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full">
+  <div class="flex w-full p-4 md:p-0">
     <input
       v-model="message"
       @keyup.enter="sendMessage"

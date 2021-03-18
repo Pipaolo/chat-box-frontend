@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-12 items-center bg-chatbox-bg-light w-full h-screen p-8 gap-8 font-sniglet"
+    class="md:grid md:grid-cols-12 md:items-center bg-chatbox-bg-light w-full h-screen p-2 sm:p-8 gap-8 font-sniglet"
   >
     <room-people-panel></room-people-panel>
     <room-message-panel></room-message-panel>
