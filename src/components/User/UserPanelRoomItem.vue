@@ -1,7 +1,9 @@
 <template>
-  <div class="grid grid-cols-4 w-full px-4">
-    <h4 class="place-self-center col-span-3">{{ props.room.name }}</h4>
-    <div class="grid grid-cols-3 gap-4">
+  <div class="grid grid-cols-2 w-full px-4">
+    <h4 class="place-self-center col-span-1">{{ props.room.name }}</h4>
+    <div
+      class="grid grid-cols-2 grid-rows-2 sm:grid-rows-none gap-2 sm:grid-cols-3 sm:gap-4"
+    >
       <button
         @click="onJoinRoomClicked"
         class="rounded bg-chatbox-bg-dark text-white border-2 border-solid border-chatbox-pink p-3 focus:outline-none hover:bg-chatbox-pink"
@@ -9,7 +11,12 @@
         <font-awesome-icon
           size="lg"
           :icon="['fas', 'door-open']"
-          class="text-white"
+          class="text-white hidden sm:inline-block"
+        />
+        <font-awesome-icon
+          size="md"
+          :icon="['fas', 'door-open']"
+          class="text-white sm:hidden"
         />
       </button>
       <button
@@ -19,7 +26,12 @@
         <font-awesome-icon
           size="lg"
           :icon="['fas', 'clipboard']"
-          class="text-white"
+          class="text-white hidden sm:inline-block"
+        />
+        <font-awesome-icon
+          size="md"
+          :icon="['fas', 'clipboard']"
+          class="text-white sm:hidden"
         />
       </button>
       <button
@@ -29,7 +41,12 @@
         <font-awesome-icon
           size="lg"
           :icon="['fas', 'trash']"
-          class="text-red-400"
+          class="text-red-400 hidden sm:inline-block"
+        />
+        <font-awesome-icon
+          size="md"
+          :icon="['fas', 'trash']"
+          class="text-red-400 sm:hidden"
         />
       </button>
     </div>
