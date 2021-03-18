@@ -4,9 +4,9 @@ import LoginPage from "./components/LoginPage.vue";
 import RegistrationPage from "./components/RegistrationPage.vue";
 import UserPage from "./components/User/UserPage.vue";
 import RoomPage from "./components/Room/RoomPage.vue";
-import { checkAuth } from "./modules/authentication";
-import { fetchRoom } from "./modules/room";
-import { connect, joinRoom } from "./modules/websocket";
+import { checkAuth, useAuthentication } from "./modules/authentication";
+import { joinRoom } from "./modules/room";
+import { connect } from "./modules/websocket";
 import { hideModal, showModal } from "./modules/modals";
 
 const routes = [
@@ -53,14 +53,11 @@ const routes = [
           disableBackdropClick: true,
         });
         // Fetch room details
-        const room = await fetchRoom(id);
+        const { user } = useAuthentication();
+        const room = await joinRoom(id, user);
         if (room) {
-          await fetchRoom(id);
-          await connect(id);
-          joinRoom(id);
           next();
         } else {
-          hideModal();
           next({ path: "user", force: true });
         }
       }

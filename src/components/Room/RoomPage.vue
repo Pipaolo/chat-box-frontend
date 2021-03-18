@@ -12,6 +12,9 @@
 import RoomMessagePanel from "./RoomMessagePanel.vue";
 import RoomPeoplePanel from "./RoomPeoplePanel.vue";
 import { defineProps } from "vue";
+import { useSocketOn } from "../../modules/websocket";
+import { updateJoinedRoomUsers } from "../../modules/room";
+import { hideModal } from "../../modules/modals";
 
 const props = defineProps({
   id: {
@@ -19,5 +22,9 @@ const props = defineProps({
   },
 });
 
-// fetchRoom();
+// Handle population of active users
+useSocketOn("send data", (data) => {
+  hideModal();
+  updateJoinedRoomUsers(data);
+});
 </script>

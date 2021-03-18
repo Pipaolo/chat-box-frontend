@@ -18,14 +18,6 @@ export const useSocketClose = () => {
   state.socket = {};
 };
 
-export const joinRoom = (roomID) => {
-  const auth = useAuthentication();
-  useSocketEmit("join room", {
-    roomID,
-    user: auth.user,
-  });
-};
-
 export const connect = async () => {
   const socket = IO(
     import.meta.env.MODE === "production"

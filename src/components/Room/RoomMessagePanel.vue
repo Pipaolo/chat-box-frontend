@@ -1,11 +1,8 @@
 <template>
   <div
-    class="flex flex-col col-span-12 sm:col-span-8 bg-chatbox-bg-dark rounded-lg h-full text-white md:p-4 md:gap-4 overflow-hidden"
+    class="flex flex-col col-span-12 sm:col-span-8 bg-chatbox-bg-dark rounded-lg h-full text-white p-2 md:p-4 gap-4 overflow-hidden"
   >
-    <div class="p-2 md:p-0 flex flex-col gap-2">
-      <p class="text-2xl">{{ joinedRoom.name }}</p>
-      <div class="w-full bg-chatbox-bg-light h-1 rounded-full"></div>
-    </div>
+    <room-message-header></room-message-header>
     <room-message-list></room-message-list>
     <room-message-box></room-message-box>
 
@@ -31,8 +28,34 @@
 <script setup="props">
 import RoomMessageList from "./RoomMessageList.vue";
 import RoomMessageBox from "./RoomMessageBox.vue";
+import RoomMessageHeader from "./RoomMessageHeader.vue";
+
 import { defineProps } from "vue";
-import { useRooms } from "../../modules/room";
+import { leaveRoom, useRooms } from "../../modules/room";
+import { hideModal, showModal } from "../../modules/modals";
+import { useSocketClose, useSocketEmit } from "../../modules/websocket";
+import router from "../../routes";
+import { useAuthentication } from "../../modules/authentication";
+import { copyLink } from "../../helpers/copy_link";
 
 const { joinedRoom } = useRooms();
+const { user } = useAuthentication();
+
+function onCopyLinkButtonClicked() {
+  copyLink(joinedRoom._id);
+}
+
+async function onLeaveButtonClicked() {
+  showModal("loading", {
+    disableBackdropClick: true,
+  });
+  useSocketEmit("leave room", {
+    user,
+    roomID: joinedRoom._id,
+  });
+  leaveRoom();
+  useSocketClose();
+  await router.push({ path: "/user", force: true });
+  hideModal();
+}
 </script>

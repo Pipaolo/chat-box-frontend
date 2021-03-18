@@ -30,7 +30,7 @@
 <script setup>
 import { ref } from "vue";
 import { hideModal, showModal } from "../../modules/modals";
-import { fetchRoom, joinRoom } from "../../modules/room";
+import { joinRoom } from "../../modules/room";
 import router from "../../routes";
 
 const roomID = ref("");
@@ -40,13 +40,11 @@ function onCreateButtonClicked() {
 }
 
 async function onJoinButtonClicked() {
-  showModal("loading", {
-    disableBackdropClick: true,
-  });
-  const room = await fetchRoom(roomID.value);
-
-  if (room) {
-    router.push({ path: "/room/" + room._id });
+  if (roomID.value.trim() !== "") {
+    showModal("loading", {
+      disableBackdropClick: true,
+    });
+    await router.push({ path: "/room/" + roomID.value });
   }
 }
 </script>

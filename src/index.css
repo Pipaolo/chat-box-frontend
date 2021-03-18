@@ -1,6 +1,6 @@
 :root {
   --animate-delay: 0.5s;
-
+  --animate-duration: 500ms;
   --color-accent: #f284af;
   --color-bg-dark: #313a52;
   --color-bg-light: #4c5879;

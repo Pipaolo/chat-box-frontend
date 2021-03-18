@@ -19,6 +19,7 @@
       :modalProps="state.modalProps"
     ></success-modal>
     <create-room-modal v-if="state.modal == 'create-room'"></create-room-modal>
+    <people-list-modal v-if="state.modal == 'people-list'"></people-list-modal>
   </div>
 </template>
 
@@ -31,6 +32,7 @@ import LoadingModal from "./LoadingModal.vue";
 import ErrorModal from "./ErrorModal.vue";
 import SuccessModal from "./SuccessModal.vue";
 import CreateRoomModal from "./CreateRoomModal.vue";
+import PeopleListModal from "./PeopleListModal.vue";
 
 const modals = {
   loading: LoadingModal,

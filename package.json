@@ -1,6 +1,6 @@
 {
   "name": "chat-box",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --mode development",
@@ -27,6 +27,7 @@
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.8",
     "stylelint-config-recommended": "^4.0.0",
+    "tailwind-scrollbar": "^1.2.4",
     "tailwindcss": "^2.0.3",
     "vite": "^2.1.0"
   }
