@@ -6,8 +6,10 @@
   <div>
     <loading-modal
       v-if="state.modal == 'loading'"
+      class="animate__animated animate__fadeIn"
       :modalProps="state.modalProps"
     ></loading-modal>
+
     <error-modal
       v-if="state.modal == 'error'"
       :modalProps="state.modalProps"

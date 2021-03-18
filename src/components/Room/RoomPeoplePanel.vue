@@ -30,6 +30,7 @@ import { useSocketClose, useSocketEmit } from "../../modules/websocket";
 import { copyLink } from "../../helpers/copy_link";
 import router from "../../routes";
 import { useAuthentication } from "../../modules/authentication";
+import { hideModal, showModal } from "../../modules/modals";
 
 const { joinedRoom } = useRooms();
 const { user } = useAuthentication();
@@ -37,14 +38,18 @@ function onCopyLinkButtonClicked() {
   copyLink(joinedRoom._id);
 }
 
-function onLeaveButtonClicked() {
+async function onLeaveButtonClicked() {
+  showModal("loading", {
+    disableBackdropClick: true,
+  });
   useSocketEmit("leave room", {
     user,
     roomID: joinedRoom._id,
   });
   leaveRoom();
   useSocketClose();
-  router.push({ path: "/user", force: true });
+  await router.push({ path: "/user", force: true });
+  hideModal();
 }
 </script>
     

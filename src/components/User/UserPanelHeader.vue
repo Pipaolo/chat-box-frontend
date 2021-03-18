@@ -38,10 +38,12 @@ function onCreateButtonClicked() {
 }
 
 async function onJoinButtonClicked() {
+  showModal("loading", {
+    disableBackdropClick: true,
+  });
   const room = await fetchRoom(roomID.value);
 
   if (room) {
-    hideModal();
     router.push({ path: "/room/" + room._id });
   }
 }

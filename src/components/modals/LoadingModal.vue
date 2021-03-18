@@ -1,20 +1,23 @@
 <template>
-  <div
-    class="w-full h-full fixed block top-0 left-0 bg-gray-600 opacity-75 z-50"
-    @click="onOutsideClick"
-  >
-    <span
-      class="text-green-500 opacity-75 top-1/2 my-0 mx-auto block relative w-0 h-0"
-      style="top: 50%"
-    >
-      <i class="fas fa-circle-notch fa-spin fa-5x"></i>
-    </span>
+  <div class="w-full h-full absolute top-0 left-0 z-40" @click="onOutsideClick">
+    <div
+      class="w-full h-full absolute top-0 left-0 bg-gray-600 opacity-50 z-40"
+    ></div>
+
+    <div class="grid place-content-center w-full h-full z-50">
+      <font-awesome-icon
+        size="4x"
+        :icon="['fas', 'circle-notch']"
+        class="text-chatbox-pink animate-spin"
+      />
+    </div>
   </div>
 </template>
 
 <script setup="props">
 import { defineProps } from "vue";
 import { hideModal } from "../../modules/modals";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const props = defineProps({
   modalProps: {

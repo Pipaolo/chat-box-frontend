@@ -10,10 +10,12 @@
     
 <script setup="props">
 import { ref } from "vue";
+import { hideModal } from "../../modules/modals";
 import { useSocketOn } from "../../modules/websocket";
 const people = ref([]);
 
 useSocketOn("send data", (data) => {
+  hideModal();
   people.value = data;
 });
 

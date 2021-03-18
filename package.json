@@ -1,6 +1,6 @@
 {
   "name": "chat-box",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --mode development",
@@ -19,7 +19,7 @@
     "socket.io-client": "^2.4.0",
     "vue": "^3.0.5",
     "vue-router": "^4.0.5",
-    "vue-simple-spinner": "^1.2.10"
+    "vuelidate": "vuelidate/vuelidate#next"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.1.5",

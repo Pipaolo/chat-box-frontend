@@ -7,6 +7,7 @@ import {
   faTrash,
   faDoorOpen,
   faPaperPlane,
+  faCircleNotch,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Router from "./routes";
@@ -20,5 +21,6 @@ library.add(faClipboard);
 library.add(faTrash);
 library.add(faDoorOpen);
 library.add(faPaperPlane);
+library.add(faCircleNotch);
 
 createApp(App).use(Router).mount("#app");

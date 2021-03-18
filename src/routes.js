@@ -7,6 +7,7 @@ import RoomPage from "./components/Room/RoomPage.vue";
 import { checkAuth } from "./modules/authentication";
 import { fetchRoom } from "./modules/room";
 import { connect, joinRoom } from "./modules/websocket";
+import { hideModal, showModal } from "./modules/modals";
 
 const routes = [
   {
@@ -48,6 +49,9 @@ const routes = [
       if (!id) {
         next({ path: "user", force: true });
       } else {
+        showModal("loading", {
+          disableBackdropClick: true,
+        });
         // Fetch room details
         const room = await fetchRoom(id);
         if (room) {
@@ -56,6 +60,7 @@ const routes = [
           joinRoom(id);
           next();
         } else {
+          hideModal();
           next({ path: "user", force: true });
         }
       }

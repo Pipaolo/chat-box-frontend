@@ -42,7 +42,7 @@ import { defineProps } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { deleteRoom, joinRoom } from "../../modules/room";
 import { copyLink } from "../../helpers/copy_link";
-import { showModal } from "../../modules/modals";
+import { hideModal, showModal } from "../../modules/modals";
 const props = defineProps({
   room: {
     type: Object,
@@ -52,9 +52,12 @@ const props = defineProps({
 function onCopyLinkClicked() {
   copyLink(props.room._id);
 }
-function onJoinRoomClicked() {
-  joinRoom(props.room);
-  router.push({ path: "/room/" + props.room._id });
+async function onJoinRoomClicked() {
+  showModal("loading", {
+    disableBackdropClick: true,
+  });
+  await joinRoom(props.room);
+  await router.push({ path: "/room/" + props.room._id, force: true });
 }
 function onDeleteRoomClicked() {
   showModal("loading");
