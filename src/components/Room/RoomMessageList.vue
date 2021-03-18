@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 flex flex-col overflow-x-auto gap-4">
+  <div ref="root" class="flex-1 flex flex-col-reverse overflow-x-auto gap-4">
     <room-message-item
       v-for="message in messages"
       :key="message.timestamp"
@@ -10,12 +10,14 @@
 
 <script setup>
 import RoomMessageItem from "./RoomMessageItem.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useSocketOn } from "../../modules/websocket";
-
+const root = ref(null);
 const messages = ref([]);
 
-useSocketOn("chat message", (message) => {
-  messages.value.push(message.data);
+onMounted(() => {
+  useSocketOn("chat message", (message) => {
+    messages.value = [message.data, ...messages.value];
+  });
 });
 </script>

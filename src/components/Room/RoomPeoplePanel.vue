@@ -26,19 +26,24 @@
 <script setup>
 import RoomPeopleList from "./RoomPeopleList.vue";
 import { leaveRoom, useRooms } from "../../modules/room.js";
-import { useSocketClose } from "../../modules/websocket";
+import { useSocketClose, useSocketEmit } from "../../modules/websocket";
 import { copyLink } from "../../helpers/copy_link";
 import router from "../../routes";
+import { useAuthentication } from "../../modules/authentication";
 
 const { joinedRoom } = useRooms();
-
+const { user } = useAuthentication();
 function onCopyLinkButtonClicked() {
   copyLink(joinedRoom._id);
 }
 
 function onLeaveButtonClicked() {
-  useSocketClose();
+  useSocketEmit("leave room", {
+    user,
+    roomID: joinedRoom._id,
+  });
   leaveRoom();
+  useSocketClose();
   router.push({ path: "/user", force: true });
 }
 </script>

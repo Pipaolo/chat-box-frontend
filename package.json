@@ -1,9 +1,10 @@
 {
-  "name": "ChatBox",
-  "version": "0.0.1",
+  "name": "chat-box",
+  "version": "0.1.0",
   "scripts": {
     "start": "npm run dev",
-    "dev": "cross-env NODE_ENV=dev vite",
+    "dev": "vite --mode development",
+    "prod": "vite --mode production",
     "build": "vite build",
     "serve": "vite preview"
   },

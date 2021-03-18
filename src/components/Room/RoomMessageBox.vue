@@ -24,24 +24,26 @@
 
 <script setup >
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { ref } from "vue";
+import { ref, useContext } from "vue";
 import { useAuthentication } from "../../modules/authentication.js";
 import { useRooms } from "../../modules/room.js";
 import { useSocketEmit } from "../../modules/websocket.js";
 
 const message = ref("");
-
+const context = useContext();
 function sendMessage() {
-  const { joinedRoom } = useRooms();
-  const { user } = useAuthentication();
-  useSocketEmit("chat message", {
-    roomID: joinedRoom._id,
-    message: {
-      username: user.username,
-      content: message.value,
-    },
-  });
-  // Reset the message once sent
-  message.value = "";
+  if (message.value !== "") {
+    const { joinedRoom } = useRooms();
+    const { user } = useAuthentication();
+    useSocketEmit("chat message", {
+      roomID: joinedRoom._id,
+      message: {
+        username: user.username,
+        content: message.value,
+      },
+    });
+    // Reset the message once sent
+    message.value = "";
+  }
 }
 </script>

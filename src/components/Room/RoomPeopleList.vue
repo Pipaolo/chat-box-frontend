@@ -14,7 +14,7 @@ import { useSocketOn } from "../../modules/websocket";
 const people = ref([]);
 
 useSocketOn("send data", (data) => {
-  people.value.push(data);
+  people.value = data;
 });
 
 import RoomPeopleItem from "./RoomPeopleItem.vue";
