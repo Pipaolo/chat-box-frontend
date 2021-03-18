@@ -1,9 +1,14 @@
 import Axios from "axios";
 
 const axios = Axios.create({
-  baseURL: `http://${import.meta.env.VITE_SERVER_URL}:${
-    import.meta.env.VITE_SERVER_PORT
-  }`,
+  baseURL:
+    import.meta.env.mode === "production"
+      ? `https://${import.meta.env.VITE_SERVER_URL}:${
+          import.meta.env.VITE_SERVER_PORT
+        }`
+      : `http://${import.meta.env.VITE_SERVER_URL}:${
+          import.meta.env.VITE_SERVER_PORT
+        }`,
 });
 
 // If there is a token always set it when communicating with the api
