@@ -1,0 +1,32 @@
+{
+  "name": "ChatBox",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "cross-env NODE_ENV=dev vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/vue-fontawesome": "^3.0.0-3",
+    "@types/dotenv": "^8.2.0",
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "moment": "^2.29.1",
+    "socket.io-client": "^2.4.0",
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.5",
+    "vue-simple-spinner": "^1.2.10"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.1.5",
+    "@vue/compiler-sfc": "^3.0.5",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.8",
+    "stylelint-config-recommended": "^4.0.0",
+    "tailwindcss": "^2.0.3",
+    "vite": "^2.1.0"
+  }
+}

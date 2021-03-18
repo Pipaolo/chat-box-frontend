@@ -1,0 +1,12 @@
+:root {
+  --animate-delay: 0.5s;
+
+  --color-accent: #f284af;
+  --color-bg-dark: #313a52;
+  --color-bg-light: #4c5879;
+}
+
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
