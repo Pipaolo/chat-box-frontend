@@ -59,10 +59,10 @@ const routes = [
         });
 
         // Check user
-        let user = null;
-        try {
-          user = await checkAuth();
-        } catch {
+        let user = await checkAuth();
+
+        if (!user) {
+          console.log("alsdkfj");
           user = loginAsAnonymous();
         }
 

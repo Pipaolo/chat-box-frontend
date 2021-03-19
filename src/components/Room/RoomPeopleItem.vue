@@ -5,7 +5,7 @@
       class="text-chatbox-pink underline"
       >{{ props.user.username }}</span
     >
-    <span v-else>{{ props.user.username }}</span>
+    <span v-else class="text-white">{{ props.user.username }}</span>
 
     <span v-if="isRoomOwner">🎇</span>
   </h4>
