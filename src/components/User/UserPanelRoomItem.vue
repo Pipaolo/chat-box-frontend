@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 w-full md:px-4 gap-2 md:gap-0"
+    class="hidden md:grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 w-full md:px-4 gap-2 md:gap-0"
   >
     <h4 class="place-self-center sm:col-span-2 md:col-span-3 break-all">
       {{ props.room.name }}
@@ -58,6 +58,14 @@
       </button>
     </div>
   </div>
+  <div
+    @click="onRoomItemClicked"
+    class="flex md:hidden w-full justify-center p-2 rounded-lg bg-chatbox-bg-light hover:bg-gray-500"
+  >
+    <h4 class="place-self-center sm:col-span-2 md:col-span-3 break-all">
+      {{ props.room.name }}
+    </h4>
+  </div>
 </template>
 
 <script setup="props">
@@ -88,6 +96,12 @@ async function onJoinRoomClicked() {
 }
 function onDeleteRoomClicked() {
   showModal("loading");
-  deleteRoom(props.room);
+  deleteRoom(props.room._id);
+}
+function onRoomItemClicked() {
+  showModal("room-options", {
+    roomName: props.room.name,
+    roomID: props.room._id,
+  });
 }
 </script>

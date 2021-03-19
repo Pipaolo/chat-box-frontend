@@ -2,7 +2,9 @@
   <div
     class="flex items-center justify-center w-full h-full fixed top-0 left-0 z-50"
   >
-    <div class="bg-chatbox-bg-light rounded-lg sm:w-1/2 sm:h-1/2 z-50 p-4">
+    <div
+      class="animate__animated animate__zoomIn bg-chatbox-bg-light rounded-lg w-full max-w-sm z-50 p-4"
+    >
       <div class="flex flex-col items-center h-full">
         <h4 class="text-xl text-white mb-4">Create Room</h4>
         <div class="flex items-center flex-1">

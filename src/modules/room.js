@@ -26,10 +26,10 @@ export const fetchRooms = async () => {
   }
 };
 
-export const deleteRoom = async (room) => {
+export const deleteRoom = async (roomID) => {
   try {
-    const response = await axios.delete(`/room/${room._id}`);
-    state.rooms = state.rooms.filter((r) => r._id !== room._id);
+    const response = await axios.delete(`/room/${roomID}`);
+    state.rooms = state.rooms.filter((r) => r._id !== roomID);
     hideModal();
     return response.data;
   } catch (error) {
