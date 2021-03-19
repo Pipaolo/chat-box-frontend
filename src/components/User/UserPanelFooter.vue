@@ -1,3 +1,7 @@
 <template>
-  <img class="w-36" src="../../assets/images/logo.png" alt="logo" />
+  <logo></logo>
 </template>
+
+<script setup>
+import Logo from "../Logo.vue";
+</script>

@@ -2,12 +2,7 @@
   <div
     class="registration-page flex flex-col items-center md:justify-center w-full bg-chatbox-bg-dark h-full pt-10 md:p-10 gap-10 md:gap-0"
   >
-    <img
-      class="w-36 md:absolute md:top-4 z-10"
-      src="../assets/images/logo.png"
-      alt="logo"
-      @click="onLogoPressed"
-    />
+    <logo class="w-36 md:absolute md:top-4 z-10"></logo>
     <form
       @submit.prevent="onSubmit"
       class="animate__animated animate__bounceIn w-4/5 md:max-w-screen-sm bg-chatbox-bg-light rounded-xl p-8 text-white border-2 border-chatbox-pink border-solid z-10"
@@ -77,6 +72,7 @@
   </div>
 </template>
 <script setup>
+import Logo from "./Logo.vue";
 import { ref } from "vue";
 import { hideModal, showModal } from "../modules/modals";
 import { register } from "../modules/authentication";

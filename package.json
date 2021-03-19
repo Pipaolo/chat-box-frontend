@@ -1,6 +1,6 @@
 {
   "name": "chat-box",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --mode production",
