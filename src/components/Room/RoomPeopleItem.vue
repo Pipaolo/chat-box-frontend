@@ -1,6 +1,12 @@
 <template>
-  <h4 class="text-white">
-    {{ props.user.username }}
+  <h4 class="font-sniglet">
+    <span
+      v-if="props.user.username == user.username"
+      class="text-chatbox-pink underline"
+      >{{ props.user.username }}</span
+    >
+    <span v-else>{{ props.user.username }}</span>
+
     <span v-if="isRoomOwner">🎇</span>
   </h4>
 </template>
@@ -11,7 +17,7 @@ import { useAuthentication } from "../../modules/authentication";
 import { useRooms } from "../../modules/room";
 
 const { joinedRoom } = useRooms();
-
+const { user } = useAuthentication();
 const props = defineProps({
   user: {
     type: Object,

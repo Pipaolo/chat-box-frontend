@@ -57,17 +57,22 @@ const routes = [
         showModal("loading", {
           disableBackdropClick: true,
         });
-        let { user: loggedInUser } = useAuthentication();
+
+        // Check user
+        let user = null;
+        try {
+          user = await checkAuth();
+        } catch {
+          user = loginAsAnonymous();
+        }
 
         let room = null;
-
         // Check if the user is logged in
-        if (Object.keys(loggedInUser).length === 0) {
+        if (!user) {
           // Generate a random username
-          const user = loginAsAnonymous();
           room = await joinRoom(id, user);
         } else {
-          room = await joinRoom(id, loggedInUser);
+          room = await joinRoom(id, user);
         }
 
         if (room) {
