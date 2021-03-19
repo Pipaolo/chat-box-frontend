@@ -67,7 +67,6 @@ const routes = [
         let user = await checkAuth();
 
         if (!user) {
-          console.log("alsdkfj");
           user = loginAsAnonymous();
         }
 
@@ -101,12 +100,11 @@ const router = createRouter({
 // Add route guards
 router.beforeEach((to, _, next) => {
   const publicRoutes = ["Home", "Login", "Register", "Room"];
-
   if (!publicRoutes.find((p) => p === to.name)) {
     // Check for authentication
     checkAuth().then((user) => {
       if (!user) {
-        next({ path: "login" });
+        next({ path: "/login", force: true });
       } else {
         next();
       }

@@ -49,8 +49,8 @@ async function onLeaveButtonClicked() {
   });
   leaveRoom();
   useSocketClose();
-  await router.push({ path: "/user", force: true });
-  hideModal();
+
+  await router.push({ path: "/user" });
 }
 </script>
     

@@ -29,5 +29,6 @@ export const generateRandomUser = () => {
   return {
     username,
     _id: uuid,
+    isAnonymous: true,
   };
 };
