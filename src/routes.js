@@ -30,10 +30,15 @@ const routes = [
     path: "/login",
     component: LoginPage,
     beforeEnter: (_, __, next) => {
+      showModal("loading", {
+        disableBackdropClick: true,
+      });
       checkAuth().then((user) => {
         if (!user) {
+          hideModal();
           next();
         } else {
+          hideModal();
           next({ path: "user" });
         }
       });

@@ -18,6 +18,7 @@
       v-if="state.modal == 'success'"
       :modalProps="state.modalProps"
     ></success-modal>
+
     <create-room-modal v-if="state.modal == 'create-room'"></create-room-modal>
     <people-list-modal v-if="state.modal == 'people-list'"></people-list-modal>
     <room-options-modal
