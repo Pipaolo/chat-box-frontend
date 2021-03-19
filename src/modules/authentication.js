@@ -35,8 +35,9 @@ export const register = async (username, password) => {
       username,
       password,
     });
+    hideModal();
     showModal("success", {
-      successMessage: "Registration Success!",
+      successMessage: "Registration Success! You may now login! ;)",
       disableBackdropClick: true,
       duration: 3000,
     });

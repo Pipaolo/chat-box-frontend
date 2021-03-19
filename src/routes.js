@@ -75,7 +75,9 @@ const router = createRouter({
 
 // Add route guards
 router.beforeEach((to, _, next) => {
-  if (to.path !== "/login" && to.path !== "/register") {
+  const publicRoutes = ["/", "/login", "/register"];
+
+  if (!publicRoutes.find((p) => p === to.path)) {
     // Check for authentication
     checkAuth().then((user) => {
       if (!user) {
@@ -85,7 +87,6 @@ router.beforeEach((to, _, next) => {
       }
     });
   } else {
-    console.log("nice");
     next();
   }
 });

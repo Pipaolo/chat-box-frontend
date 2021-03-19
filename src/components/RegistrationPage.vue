@@ -6,6 +6,7 @@
       class="w-36 md:absolute md:top-4 z-10"
       src="../assets/images/logo.png"
       alt="logo"
+      @click="onLogoPressed"
     />
     <form
       @submit.prevent="onSubmit"
@@ -84,6 +85,10 @@ const username = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 
+async function onLogoPressed() {
+  await router.push({ path: "/", force: true });
+}
+
 async function onSubmit() {
   // Validate Form
   const regexp = /^[a-zA-Z0-9]*$/;
@@ -125,5 +130,6 @@ async function onSubmit() {
 
   showModal("loading");
   await register(username.value, password.value);
+  await router.push({ path: "/login", force: true });
 }
 </script>
