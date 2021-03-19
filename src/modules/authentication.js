@@ -1,4 +1,5 @@
 import { reactive, computed } from "vue";
+import CryptoJS from "crypto-js";
 import { generateRandomUser } from "../helpers/anonymous";
 import axios from "../helpers/axios";
 import { hideModal, showModal } from "./modals";
@@ -9,9 +10,15 @@ const state = reactive({
 
 export const login = async (username, password) => {
   try {
+    // Encrypt entered password for security
+    const encryptedPassword = CryptoJS.AES.encrypt(
+      password,
+      import.meta.env.VITE_ENCRYPTION_KEY
+    ).toString();
+
     const response = await axios.patch("/auth/login", {
       username,
-      password,
+      password: encryptedPassword,
     });
 
     localStorage.setItem("token", response.data.token);
@@ -21,6 +28,7 @@ export const login = async (username, password) => {
     // Store the token in the local storage
     hideModal();
   } catch (error) {
+    console.error(error);
     hideModal();
     showModal("error", {
       errorMessage: error.response["data"]["message"],
@@ -32,10 +40,17 @@ export const login = async (username, password) => {
 
 export const register = async (username, password) => {
   try {
+    // Encrypt entered password for security
+    const encryptedPassword = CryptoJS.AES.encrypt(
+      password,
+      import.meta.env.VITE_ENCRYPTION_KEY
+    ).toString();
+
     const response = await axios.post("/auth/register", {
       username,
-      password,
+      password: encryptedPassword,
     });
+
     hideModal();
     showModal("success", {
       successMessage: "Registration Success! You may now login! ;)",

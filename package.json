@@ -1,9 +1,9 @@
 {
   "name": "chat-box",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "scripts": {
     "start": "npm run dev",
-    "dev": "vite --mode production",
+    "dev": "vite --mode development",
     "prod": "vite build --mode production",
     "build": "vite build",
     "serve": "vite preview"
@@ -13,7 +13,11 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^3.0.0-3",
     "@types/dotenv": "^8.2.0",
+    "@vuelidate/core": "^2.0.0-alpha.14",
+    "@vuelidate/validators": "^2.0.0-alpha.12",
     "axios": "^0.21.1",
+    "crypto-js": "^4.0.0",
+    "cryptr": "^6.0.2",
     "dotenv": "^8.2.0",
     "emoji-js": "^3.5.0",
     "moment": "^2.29.1",
