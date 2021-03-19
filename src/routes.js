@@ -4,10 +4,15 @@ import LoginPage from "./components/LoginPage.vue";
 import RegistrationPage from "./components/RegistrationPage.vue";
 import UserPage from "./components/User/UserPage.vue";
 import RoomPage from "./components/Room/RoomPage.vue";
-import { checkAuth, useAuthentication } from "./modules/authentication";
+import {
+  checkAuth,
+  loginAsAnonymous,
+  useAuthentication,
+} from "./modules/authentication";
 import { joinRoom } from "./modules/room";
 import { connect } from "./modules/websocket";
 import { hideModal, showModal } from "./modules/modals";
+import { generateRandomUser } from "./helpers/anonymous";
 
 const routes = [
   {
@@ -52,9 +57,19 @@ const routes = [
         showModal("loading", {
           disableBackdropClick: true,
         });
-        // Fetch room details
-        const { user } = useAuthentication();
-        const room = await joinRoom(id, user);
+        let { user: loggedInUser } = useAuthentication();
+
+        let room = null;
+
+        // Check if the user is logged in
+        if (Object.keys(loggedInUser).length === 0) {
+          // Generate a random username
+          const user = loginAsAnonymous();
+          room = await joinRoom(id, user);
+        } else {
+          room = await joinRoom(id, loggedInUser);
+        }
+
         if (room) {
           next();
         } else {
@@ -75,9 +90,9 @@ const router = createRouter({
 
 // Add route guards
 router.beforeEach((to, _, next) => {
-  const publicRoutes = ["/", "/login", "/register"];
+  const publicRoutes = ["Home", "Login", "Register", "Room"];
 
-  if (!publicRoutes.find((p) => p === to.path)) {
+  if (!publicRoutes.find((p) => p === to.name)) {
     // Check for authentication
     checkAuth().then((user) => {
       if (!user) {

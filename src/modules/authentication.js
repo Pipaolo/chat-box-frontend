@@ -1,4 +1,5 @@
 import { reactive, computed } from "vue";
+import { generateRandomUser } from "../helpers/anonymous";
 import axios from "../helpers/axios";
 import { hideModal, showModal } from "./modals";
 
@@ -73,6 +74,11 @@ export const checkAuth = async () => {
       return null;
     }
   }
+};
+
+export const loginAsAnonymous = () => {
+  state.user = generateRandomUser();
+  return state.user;
 };
 
 export const useAuthentication = () => state;
