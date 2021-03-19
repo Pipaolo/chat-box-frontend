@@ -1,9 +1,9 @@
 {
   "name": "chat-box",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "scripts": {
     "start": "npm run dev",
-    "dev": "vite --mode development",
+    "dev": "vite --mode production",
     "prod": "vite build --mode production",
     "build": "vite build",
     "serve": "vite preview"
@@ -15,6 +15,7 @@
     "@types/dotenv": "^8.2.0",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
+    "emoji-js": "^3.5.0",
     "moment": "^2.29.1",
     "socket.io-client": "^2.4.0",
     "vue": "^3.0.5",

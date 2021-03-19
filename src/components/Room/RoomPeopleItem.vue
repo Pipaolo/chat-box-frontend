@@ -5,8 +5,6 @@
   </h4>
 </template>
     
-
-
 <script setup="props">
 import { defineProps, onMounted, ref } from "vue";
 import { useAuthentication } from "../../modules/authentication";

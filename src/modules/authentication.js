@@ -41,7 +41,7 @@ export const register = async (username, password) => {
       disableBackdropClick: true,
       duration: 3000,
     });
-    return response.data;
+    return Promise.resolve(response.data);
   } catch (error) {
     hideModal();
     showModal("error", {

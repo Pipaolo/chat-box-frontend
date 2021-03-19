@@ -3,6 +3,7 @@
     class="hidden md:flex md:flex-col md:col-span-4 bg-chatbox-bg-dark rounded-lg h-full text-white p-4 gap-4 overflow-hidden"
   >
     <p class="text-3xl">People</p>
+
     <room-people-list></room-people-list>
     <div class="flex justify-evenly bg-chatbox-bg-light rounded-lg p-2">
       <button

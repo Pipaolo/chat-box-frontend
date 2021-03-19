@@ -83,7 +83,7 @@ async function onJoinRoomClicked() {
   showModal("loading", {
     disableBackdropClick: true,
   });
-  // await joinRoom(props.room, user);
+
   await router.push({ path: "/room/" + props.room._id, force: true });
 }
 function onDeleteRoomClicked() {
