@@ -1,6 +1,5 @@
 <template>
   <div
-    ref="root"
     class="flex-1 flex flex-col-reverse overflow-x-hidden gap-4 p-2 scrollbar scrollbar-thin scrollbar- scrollbar-thumb-chatbox-pink scrollbar-track-transparent"
   >
     <room-message-item
