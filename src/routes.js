@@ -48,6 +48,10 @@ const routes = [
     name: "User",
     path: "/user",
     component: UserPage,
+    beforeEnter: (to, __, next) => {
+      hideModal();
+      next();
+    },
   },
   {
     name: "Room",
