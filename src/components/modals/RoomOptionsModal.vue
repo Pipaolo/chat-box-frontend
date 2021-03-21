@@ -42,42 +42,43 @@
 </template>
 
 <script setup="props">
-import { defineProps, ref } from "vue";
-import { hideModal, showModal } from "../../modules/modals";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { deleteRoom } from "../../modules/room";
-import { copyLink } from "../../helpers";
-import router from "../../routes";
+import { defineProps, ref } from 'vue'
+import { hideModal, showModal } from '../../modules/modals'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { deleteRoom } from '../../modules/room'
+import { copyLink } from '../../helpers'
+import router from '../../routes'
 
 const { modalProps } = defineProps({
   modalProps: {
     type: Object,
     default: {
       disableBackdropClick: false,
-      roomName: "",
-      roomID: "",
-    },
-  },
-});
+      roomName: '',
+      roomID: ''
+    }
+  }
+})
 
 function onOutsideClick() {
-  hideModal();
+  hideModal()
 }
 
 function onCopyLinkClicked() {
-  copyLink(modalProps.roomID);
+  copyLink(modalProps.roomID)
+  showNotification(NOTIFICATION_TYPE.success, 'Room ID Copied', {})
 }
 async function onJoinRoomClicked() {
-  showModal("loading", {
-    disableBackdropClick: true,
-  });
-  await router.push({ path: "/room/" + modalProps.roomID, force: true });
+  showModal('loading', {
+    disableBackdropClick: true
+  })
+  await router.push({ path: '/room/' + modalProps.roomID, force: true })
 }
 function onDeleteRoomClicked() {
-  showModal("loading"),
+  showModal('loading'),
     {
-      disableBackdropClick: true,
-    };
-  deleteRoom(modalProps.roomID);
+      disableBackdropClick: true
+    }
+  deleteRoom(modalProps.roomID)
 }
 </script>
