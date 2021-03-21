@@ -5,23 +5,20 @@
     <loading-modal
       v-if="state.modal == 'loading'"
       class="animate__animated animate__fadeIn"
-      modal-props="state.modalProps"
+      :modalProps="state.modalProps"
     />
 
-    <error-modal
-      v-if="state.modal == 'error'" 
-      modal-props="state.modalProps"
-    />
+    <error-modal v-if="state.modal == 'error'" :modalProps="state.modalProps" />
     <success-modal
       v-if="state.modal == 'success'"
-      modal-props="state.modalProps"
+      :modalProps="state.modalProps"
     />
 
     <create-room-modal v-if="state.modal == 'create-room'" />
     <people-list-modal v-if="state.modal == 'people-list'" />
     <room-options-modal
       v-if="state.modal == 'room-options'"
-      modal-props="state.modalProps"
+      :modalProps="state.modalProps"
     />
   </div>
 </template>
