@@ -1,12 +1,13 @@
 <template>
   <router-view />
 
-  <ModalManager></ModalManager>
+  <ModalManager />
+  <notifications-manager />
 </template>
 
 <script setup>
 import LandingPage from "./components/LandingPage.vue";
-import LoadingModal from "./components/modals/LoadingModal.vue";
+import NotificationsManager from "./components/Notifiications/NotificationsManager.vue";
 import ModalManager from "./components/modals/ModalManager.vue";
 </script>
 

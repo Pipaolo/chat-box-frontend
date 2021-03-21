@@ -21,27 +21,27 @@
     <div
       class="fixed bg-black opacity-50 w-full h-full z-40"
       @click="onOutsideClick"
-    ></div>
+    />
   </div>
 </template>
 
 <script setup="props">
-import { defineProps } from "vue";
-import { hideModal } from "../../modules/modals";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { defineProps } from 'vue'
+import { hideModal } from '../../modules/modals'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const props = defineProps({
   modalProps: {
     type: Object,
     default: {
-      disableBackdropClick: false,
-    },
-  },
-});
+      disableBackdropClick: false
+    }
+  }
+})
 
 function onOutsideClick() {
   if (!props.modalProps.disableBackdropClick) {
-    hideModal();
+    hideModal()
   }
 }
 </script>

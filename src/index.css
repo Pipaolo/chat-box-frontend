@@ -1,3 +1,4 @@
+@import 'vue-awesome-notifications/dist/styles/style.css';
 :root {
   --animate-delay: 0.5s;
   --animate-duration: 500ms;

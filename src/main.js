@@ -16,6 +16,7 @@ import App from "./App.vue";
 
 import "./index.css";
 
+// Setup all the icons that we would need in the project
 library.add(faExclamationCircle);
 library.add(faCheckCircle);
 library.add(faClipboard);

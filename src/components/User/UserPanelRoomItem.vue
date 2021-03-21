@@ -10,8 +10,8 @@
     >
       <button
         title="Join room"
-        @click="onJoinRoomClicked"
         class="rounded bg-chatbox-bg-dark text-white border-2 border-solid border-chatbox-pink p-3 focus:outline-none hover:bg-chatbox-pink"
+        @click="onJoinRoomClicked"
       >
         <font-awesome-icon
           size="lg"
@@ -26,8 +26,8 @@
       </button>
       <button
         title="Copy link to clipboard"
-        @click="onCopyLinkClicked"
         class="rounded bg-chatbox-bg-dark text-white border-2 border-solid border-chatbox-pink p-3 focus:outline-none hover:bg-chatbox-pink"
+        @click="onCopyLinkClicked"
       >
         <font-awesome-icon
           size="lg"
@@ -42,8 +42,8 @@
       </button>
       <button
         title="Delete room"
-        @click="onDeleteRoomClicked"
         class="rounded bg-chatbox-bg-dark text-white border-2 border-solid border-chatbox-pink p-3 focus:outline-none hover:bg-chatbox-pink"
+        @click="onDeleteRoomClicked"
       >
         <font-awesome-icon
           size="lg"
@@ -59,8 +59,8 @@
     </div>
   </div>
   <div
-    @click="onRoomItemClicked"
     class="flex md:hidden w-full justify-center p-2 rounded-lg bg-chatbox-bg-light hover:bg-gray-500"
+    @click="onRoomItemClicked"
   >
     <h4 class="place-self-center sm:col-span-2 md:col-span-3 break-all">
       {{ props.room.name }}
@@ -69,39 +69,44 @@
 </template>
 
 <script setup="props">
-import router from "../../routes";
-import { defineProps } from "vue";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { deleteRoom, joinRoom } from "../../modules/room";
-import { copyLink } from "../../helpers/copy_link";
-import { hideModal, showModal } from "../../modules/modals";
-import { useAuthentication } from "../../modules/authentication";
+import router from '../../routes'
+import { defineProps } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { deleteRoom, joinRoom } from '../../modules/room'
+import { copyLink } from '../../helpers/copy_link'
+import { hideModal, showModal } from '../../modules/modals'
+import { useAuthentication } from '../../modules/authentication'
+import {
+  NOTIFICATION_TYPE,
+  showNotification
+} from '../../modules/notifications'
 const props = defineProps({
   room: {
-    type: Object,
-  },
-});
+    type: Object
+  }
+})
 
-const { user } = useAuthentication();
+const { user } = useAuthentication()
 
 function onCopyLinkClicked() {
-  copyLink(props.room._id);
+  copyLink(props.room._id)
+  showNotification(NOTIFICATION_TYPE.success, 'Room ID Copied', {})
 }
 async function onJoinRoomClicked() {
-  showModal("loading", {
-    disableBackdropClick: true,
-  });
+  showModal('loading', {
+    disableBackdropClick: true
+  })
 
-  await router.push({ path: "/room/" + props.room._id, force: true });
+  await router.push({ path: '/room/' + props.room._id, force: true })
 }
 function onDeleteRoomClicked() {
-  showModal("loading");
-  deleteRoom(props.room._id);
+  showModal('loading')
+  deleteRoom(props.room._id)
 }
 function onRoomItemClicked() {
-  showModal("room-options", {
+  showModal('room-options', {
     roomName: props.room.name,
-    roomID: props.room._id,
-  });
+    roomID: props.room._id
+  })
 }
 </script>

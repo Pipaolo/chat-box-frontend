@@ -6,26 +6,28 @@
       class="animate__animated animate__zoomIn bg-chatbox-bg-light rounded-lg w-full max-w-sm z-50 p-4"
     >
       <div class="flex flex-col items-center h-full">
-        <h4 class="text-xl text-white mb-4">{{ modalProps.roomName }}</h4>
+        <h4 class="text-xl text-white mb-4">
+          {{ modalProps.roomName }}
+        </h4>
         <div class="flex flex-col items-center flex-1 gap-2">
           <button
             title="Join Room"
-            @click="onJoinRoomClicked"
             class="w-full rounded bg-chatbox-bg-dark text-white border-2 border-solid border-chatbox-pink p-3 focus:outline-none hover:bg-chatbox-pink"
+            @click="onJoinRoomClicked"
           >
             Join
           </button>
           <button
             title="Copy Room ID"
-            @click="onCopyLinkClicked"
             class="w-full rounded bg-chatbox-bg-dark text-white border-2 border-solid border-chatbox-pink p-3 focus:outline-none hover:bg-chatbox-pink"
+            @click="onCopyLinkClicked"
           >
             Copy Room ID
           </button>
           <button
             title="Delete Room"
-            @click="onDeleteRoomClicked"
             class="w-full rounded bg-chatbox-bg-dark text-red-400 border-2 border-solid border-chatbox-pink p-3 focus:outline-none hover:bg-chatbox-pink"
+            @click="onDeleteRoomClicked"
           >
             Delete Room
           </button>
@@ -35,7 +37,7 @@
     <div
       class="fixed bg-black opacity-50 w-full h-full z-40"
       @click="onOutsideClick"
-    ></div>
+    />
   </div>
 </template>
 
