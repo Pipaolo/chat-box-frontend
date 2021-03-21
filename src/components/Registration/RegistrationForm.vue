@@ -57,67 +57,67 @@
     >
       Register
     </button>
-    <router-link to="/login" class="text-sm"
+    <router-link to="/login" class="text-sm underline"
       >Existing User? Login Now!</router-link
     >
   </form>
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import { showModal } from "../../modules/modals";
-import { useVuelidate } from "@vuelidate/core";
-import { required, alphaNum, helpers, alpha } from "@vuelidate/validators";
-import router from "../../routes";
-import { register, useAuthentication } from "../../modules/authentication";
+import { reactive } from 'vue'
+import { showModal } from '../../modules/modals'
+import { useVuelidate } from '@vuelidate/core'
+import { required, alphaNum, helpers, alpha } from '@vuelidate/validators'
+import router from '../../routes'
+import { register, useAuthentication } from '../../modules/authentication'
 
 const state = reactive({
-  username: "",
-  password: "",
-  confirmPassword: "",
-});
+  username: '',
+  password: '',
+  confirmPassword: ''
+})
 
-const samePassword = (value) => value === state.password;
+const samePassword = (value) => value === state.password
 
 const rules = {
   username: {
     required,
     alphaNum: helpers.withMessage(
-      "Username cannot contain spaces and symbols",
+      'Username cannot contain spaces and symbols',
       alphaNum
-    ),
+    )
   },
   password: {
     required,
     alphaNum: helpers.withMessage(
-      "Password cannot contain spaces and symbols",
+      'Password cannot contain spaces and symbols',
       alphaNum
-    ),
+    )
   },
   confirmPassword: {
     required,
     alphaNum: helpers.withMessage(
-      "Password cannot contain spaces and symbols",
+      'Password cannot contain spaces and symbols',
       alphaNum
     ),
-    samePassword: helpers.withMessage("Password is not the same", samePassword),
-  },
-};
+    samePassword: helpers.withMessage('Password is not the same', samePassword)
+  }
+}
 
-const { value: v$ } = useVuelidate(rules, state);
+const { value: v$ } = useVuelidate(rules, state)
 
 async function onSubmit() {
-  v$.$touch();
-  const isFormCorrect = await v$.$validate();
-  if (!isFormCorrect) return;
+  v$.$touch()
+  const isFormCorrect = await v$.$validate()
+  if (!isFormCorrect) return
 
-  showModal("loading");
-  await register(state.username, state.password);
+  showModal('loading')
+  await register(state.username, state.password)
 
-  const { user } = useAuthentication();
+  const { user } = useAuthentication()
 
   if (Object.keys(user).length !== 0) {
-    await router.push({ path: "/user", force: true });
+    await router.push({ path: '/user', force: true })
   }
 }
 </script>

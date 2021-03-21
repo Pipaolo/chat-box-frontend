@@ -41,7 +41,7 @@
     >
       Login
     </button>
-    <router-link to="/register" class="text-sm"
+    <router-link to="/register" class="text-sm underline"
       >No Account? Create now!</router-link
     >
   </form>
@@ -49,37 +49,37 @@
 
 
 <script setup>
-import { reactive } from "vue";
-import { showModal } from "../../modules/modals";
-import { useVuelidate } from "@vuelidate/core";
-import { required, alphaNum } from "@vuelidate/validators";
-import router from "../../routes";
-import { login, useAuthentication } from "../../modules/authentication";
+import { reactive } from 'vue'
+import { showModal } from '../../modules/modals'
+import { useVuelidate } from '@vuelidate/core'
+import { required, alphaNum } from '@vuelidate/validators'
+import router from '../../routes'
+import { login, useAuthentication } from '../../modules/authentication'
 
 const state = reactive({
-  username: "",
-  password: "",
-});
+  username: '',
+  password: ''
+})
 
 const rules = {
   username: { required, alphaNum },
-  password: { required, alphaNum },
-};
+  password: { required, alphaNum }
+}
 
-const { value: v$ } = useVuelidate(rules, state);
+const { value: v$ } = useVuelidate(rules, state)
 
 async function onSubmit() {
-  v$.$touch();
-  const isFormCorrect = await v$.$validate();
-  if (!isFormCorrect) return;
+  v$.$touch()
+  const isFormCorrect = await v$.$validate()
+  if (!isFormCorrect) return
 
-  showModal("loading");
-  await login(state.username, state.password);
+  showModal('loading')
+  await login(state.username, state.password)
 
-  const { user } = useAuthentication();
+  const { user } = useAuthentication()
 
   if (Object.keys(user).length !== 0) {
-    await router.push({ path: "/user", force: true });
+    await router.push({ path: '/user', force: true })
   }
 }
 </script>

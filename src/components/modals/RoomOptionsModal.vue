@@ -48,6 +48,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { deleteRoom } from '../../modules/room'
 import { copyLink } from '../../helpers'
 import router from '../../routes'
+import {
+  NOTIFICATION_TYPE,
+  showNotification
+} from '../../modules/notifications'
 
 const { modalProps } = defineProps({
   modalProps: {
