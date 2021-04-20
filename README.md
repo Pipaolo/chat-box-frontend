@@ -1,10 +1,11 @@
 ## ChatBox Front End
-This is the official github repository of Chatbox which is made entirely in **Vue.js**
+This is the official github repository of **ChatBox**. A realtime ChatRooms website that provide users a safe and secure environment where they can freely communicate with other people. Made entirely with **Vue.js**
+
 
 
 ## How to use
 ### Registration
-1. If you don't have an existing account go to the websites [register page](https://pipaolo.github.io/chat-box/#/register)
+1. If you don't have an existing account go to the website's [register page](https://pipaolo.github.io/chat-box/#/register)
 2. Go to the website's [login page](https://pipaolo.github.io/chat-box/#/login) and login with the newly created account.
 
 ### Joining a room (Two ways)
@@ -17,6 +18,7 @@ This is the official github repository of Chatbox which is made entirely in **Vu
   - Password Hashing both Client and Server
   - JWT Tokens for storing client credentials
 - Private and Safe for Users and Friends to Use
+- Auto Eraseable Room Messages
 - Desktop and Mobile Responsive
 - Rooms
   - Join Public Rooms Anonymously using the Room's invite link
